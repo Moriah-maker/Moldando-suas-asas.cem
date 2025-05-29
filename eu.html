@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrossel de Fotos</title>
+  <link rel="stylesheet" href="eu.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background: linear-gradient(to bottom, #00aaff, #0044cc);
+      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #FFD700; /* amarelo dourado */
+    }
+
+    .carousel {
+      position: relative;
+      width: 1200px;
+      height: 800px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border: 10px solid white;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 1s ease, transform 1s ease;
+      z-index: 0;
+    }
+
+    .carousel img.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 1;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Atingindo os seus <span class="highlight">sonhos</span></h1>
+
+  <div class="carousel">
+    <img src="img/WhatsApp Image 2025-05-27 at 18.31.02.jpeg" alt="Imagem 1">
+    <img src="img/WhatsApp Image 2025-05-27 at 18.31.02 (1).jpeg" alt="Imagem 2">
+    <img src="img/WhatsApp Image 2025-05-27 at 18.31.02 (2).jpeg" alt="Imagem 3">
+    <img src="img/WhatsApp Image 2025-05-27 at 18.31.03 (1).jpeg" alt="Imagem 4">
+    <img src="img/WhatsApp Image 2025-05-27 at 20.17.46 (1).jpeg" alt="Imagem 5">
+    <img src="img/WhatsApp Image 2025-05-27 at 19.53.23.jpeg" alt="Imagem 6">
+    <img src="img/WhatsApp Image 2025-05-27 at 21.16.38.jpeg" alt="Imagem 7">
+    <img src="img/_MG_9180.JPG" alt="Imagem 8">
+    <img src="img/_MG_9251.JPG" alt="Imagem 9">
+    <img src="img/_MG_9283.JPG" alt="Imagem 10">
+    <img src="img/_MG_9347.JPG" alt="Imagem 11">
+    <img src="img/_MG_9488.JPG" alt="Imagem 12">
+    <img src="img/_MG_9828.JPG" alt="Imagem 13">
+    <img src="img/_MG_9834.JPG" alt="Imagem 14">
+    <img src="img/IMG_0243.JPG" alt="Imagem 15">
+    <img src="img/IMG_0257.JPG" alt="Imagem 16">
+    <img src="img/IMG_9258.JPG" alt="Imagem 17">
+    <img src="img/IMG_9549.JPG" alt="Imagem 18">
+    <img src="img/IMG_9573.JPG" alt="Imagem 19">
+  </div>
+
+  <div class="buttons">
+    <button onclick="prevImage()">⇦ Anterior</button>
+    <button onclick="nextImage()">Próxima ⇨</button>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.carousel img');
+    let current = 0;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextImage() {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }
+
+    function prevImage() {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    }
+
+    // Mostrar a primeira imagem ao carregar
+    showImage(current);
+  </script>
+</body>
+</html>

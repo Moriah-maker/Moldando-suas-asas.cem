@@ -1,0 +1,16 @@
+body {
+    color: white;
+    background-color: aqua;
+}
+.carousel img {
+  opacity: 0;
+  transition: opacity 1s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carousel img.active {
+  opacity: 1;
+  z-index: 1;
+}
