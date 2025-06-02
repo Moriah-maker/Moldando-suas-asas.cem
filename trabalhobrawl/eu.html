@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moldando suas asas</title>
+  <link rel="stylesheet" href="eu.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background: linear-gradient(to bottom, #00aaff, #0044cc);
+      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #FFD700; /* amarelo dourado */
+    }
+
+    .carousel {
+      position: relative;
+      width: 90vw;
+      max-width: 1200px;
+      height: 60vh;
+      max-height: 800px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border: 10px solid white;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 1s ease, transform 1s ease;
+      z-index: 0;
+    }
+
+    .carousel img.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 1;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Atingindo os seus <span class="highlight">sonhos</span></h1>
+
+  <div class="carousel">
+    <img src="img/img17.jpeg" alt="Imagem 1">
+    <img src="img/img1.JPG" alt="Imagem 2">
+    <img src="img/img2.JPG" alt="imagem 3">
+    <img src="img/img3.JPG" alt="imagem 4">
+    <img src="img/img4.JPG" alt="Imagem 5">
+    <img src="img/img5.JPG" alt="Imagem 6">
+    <img src="img/img6.JPG" alt="Imagem 7">
+    <img src="img/img7.JPG" alt="Imagem 8">
+    <img src="img/img8.JPG" alt="Imagem 9">
+    <img src="img/img9.JPG" alt="Imagem 10">
+    <img src="img/img10.JPG" alt="Imagem 11">
+    <img src="img/img11.JPG" alt="Imagem 12">
+    <img src="img/img12.JPG" alt="Imagem 13">
+    <img src="img/img13.JPG" alt="Imagem 14">
+    <img src="img/img14.JPG" alt="Imagem 15">
+    <img src="img/img15.jpeg" alt="Imagem 16">
+    <img src="img/img16.jpeg" alt="Imagem 17">
+    <img src="img/img18.jpeg" alt="Imagem 18">
+    <img src="img/img19.jpeg" alt="Imagem 19">
+    <img src="img/img20.jpeg" alt="imagem 20">
+    <img src="img/img21.jpeg" alt="imagem 21">
+    <img src="img/img.22.jpeg" alt="imagem 22">
+    <img src="img/img23.jpeg" alt="imagem 23">
+  </div>
+
+  <div class="buttons">
+    <button onclick="prevImage()" aria-label="Imagem anterior">⇦ Anterior</button>
+    <button onclick="nextImage()" aria-label="Próxima imagem">Próxima ⇨</button>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.carousel img');
+    let current = 0;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextImage() {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }
+
+    function prevImage() {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    }
+
+    // Mostrar a primeira imagem ao carregar
+    showImage(current);
+
+    // Troca automática de imagem a cada 5 segundos (opcional)
+    // setInterval(nextImage, 5000);
+  </script>
+</body>
+</html>
